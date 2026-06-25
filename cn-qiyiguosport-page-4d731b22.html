@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奇异果体育 · 信息卡片索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9fafb;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 740px;
+            width: 100%;
+        }
+
+        /* main visual / hero */
+        .hero {
+            margin-bottom: 3.2rem;
+            text-align: left;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 2.2rem;
+        }
+
+        .hero-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #334155;
+            max-width: 640px;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid #edf2f7;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+
+        .card h2 .emoji-head {
+            margin-right: 6px;
+        }
+
+        .card p, .card li {
+            font-size: 0.98rem;
+            color: #334155;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .card li {
+            padding: 0.35rem 0 0.35rem 1.2rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #7c8ba0;
+            font-weight: 600;
+        }
+
+        .card .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin-top: 0.75rem;
+        }
+
+        .card .tag {
+            background: #f1f4f9;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.82rem;
+            color: #1e293b;
+            letter-spacing: 0.02em;
+        }
+
+        .inline-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 自然段落 (整合链接) */
+        .essay-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #edf2f7;
+            margin-bottom: 1.8rem;
+        }
+
+        .essay-block h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .essay-block p {
+            font-size: 0.98rem;
+            color: #334155;
+            margin-bottom: 0.8rem;
+        }
+
+        .essay-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #edf2f7;
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f0f3f8;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .faq-a {
+            color: #475569;
+            margin-top: 0.15rem;
+            font-size: 0.94rem;
+        }
+
+        .footer-note {
+            font-size: 0.82rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.8rem;
+            margin-top: 0.8rem;
+            text-align: left;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.6rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .card, .essay-block, .faq-mini { padding: 1.4rem 1.2rem; }
+            .card-grid { gap: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <div class="hero-label">📋 资料整理 · 信息索引</div>
+        <h1>奇异果体育 · 用途与场景</h1>
+        <p>基于公开信息整理的内容索引，从资料分类角度梳理平台特点、适用人群与常见疑问，供参考查阅。</p>
+    </div>
+
+    <!-- 卡片：用途卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2><span class="emoji-head">🧩</span>主要用途</h2>
+            <p>作为一个综合体育内容与互动平台，<a href="https://cn-qiyiguosport.com" class="inline-link">奇异果体育</a> 主要提供赛事资讯、数据浏览、社区讨论及部分运动辅助功能。以下是其核心用途分类：</p>
+            <ul>
+                <li>赛事动态跟踪 —— 覆盖多项主流体育项目的赛程、比分与新闻</li>
+                <li>运动数据查询 —— 球队/选手统计、赛季走势与历史记录</li>
+                <li>内容聚合 —— 图文、短视频、战术分析等多元形式的体育内容</li>
+                <li>互动交流 —— 用户可围绕比赛、训练、装备等话题进行讨论</li>
+            </ul>
+            <div class="tag-list">
+                <span class="tag">赛事资讯</span>
+                <span class="tag">数据查询</span>
+                <span class="tag">社区讨论</span>
+                <span class="tag">内容聚合</span>
+            </div>
+        </div>
+
+        <!-- 卡片：适合人群 -->
+        <div class="card">
+            <h2><span class="emoji-head">👥</span>适合人群</h2>
+            <p>根据平台内容特征，以下类型的使用者可能更容易获得有价值的信息：</p>
+            <ul>
+                <li><strong>体育爱好者</strong> —— 日常关注联赛、杯赛及运动员动态</li>
+                <li><strong>数据型观众</strong> —— 倾向查阅统计、排名及历史对比</li>
+                <li><strong>内容消费者</strong> —— 偏好图文、短集锦或轻量战术解读</li>
+                <li><strong>休闲交流用户</strong> —— 希望在体育话题下结识同好、交换观点</li>
+            </ul>
+            <p style="margin-top: 0.7rem; font-size: 0.92rem; color: #475569;">注：以上归类基于平台常见功能模块，实际使用体验因人而异。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 1 -->
+    <div class="essay-block">
+        <h3>📎 资料索引说明</h3>
+        <p>在整理体育类平台信息时，常会遇到入口分散、内容结构不统一的问题。本页以 <a href="https://cn-qiyiguosport.com" class="inline-link">奇异果体育</a> 为例，尝试将用途、受众及常见功能归纳为卡片式索引，便于快速了解平台轮廓。所有描述均基于公开可查的功能模块，不包含主观推荐或引导行为。</p>
+        <p>如果你正在寻找一个能够集中浏览体育资讯、查看赛程数据或参与社区讨论的渠道，这份索引可作为初步参考。具体模块的可用性及更新频率请以平台实际页面为准。</p>
+    </div>
+
+    <!-- 自然链接段落 2 (嵌入在FAQ前) -->
+    <div class="essay-block">
+        <h3>📌 关于平台定位</h3>
+        <p>从内容结构来看，<a href="https://cn-qiyiguosport.com" class="inline-link">奇异果体育</a> 整合了资讯、数据与社区三种常见形态，但并未强调某一类独占功能。对于只想快速获取比分或新闻的用户，信息流比较直接；对于希望深入讨论战术或训练方法的用户，社区板块的活跃度是更重要的考量因素。建议根据自身需求浏览对应栏目。</p>
+        <p>另外，平台内部分内容由用户生成，阅读时注意区分官方发布与个人观点，这一点在大多数体育类社区中都比较普遍。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <div class="faq-q">是否需要注册才能浏览内容？</div>
+            <div class="faq-a">部分资讯和赛事数据可以直接查看，但评论、发帖等功能通常需要注册账号。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">内容覆盖哪些体育项目？</div>
+            <div class="faq-a">主流项目如足球、篮球、网球、电竞等均有涉及，具体栏目分布可能随赛季调整。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">信息更新频率如何？</div>
+            <div class="faq-a">赛程与即时比分更新较快，社区内容取决于用户发布节奏，官方资讯一般保持日更。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">移动端与桌面端体验一致吗？</div>
+            <div class="faq-a">平台已适配常见设备，但部分交互细节（如数据表格）在大屏幕上展示更清晰。</div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        <span>整理时间 · 2025 · 内容基于公开信息归纳，不构成任何形式的推荐或担保。</span>
+    </div>
+
+</div>
+</body>
+</html>
